@@ -1,18 +1,17 @@
-/* General adjustments for print */
+/* -------------------------
+   GENERAL PRINT SETTINGS
+------------------------- */
 body {
   font-size: 12pt;
   color: #111;
   background: #fff;
   padding: 0;
   margin: 0;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 
-header, section, footer {
-  page-break-inside: avoid;
-  break-inside: avoid;
-}
-
-/* Remove animations and hover effects */
+/* Remove animations */
 .icon, .project-icon {
   transform: none !important;
   animation: none !important;
@@ -27,22 +26,90 @@ header, section, footer {
 svg {
   width: auto !important;
   height: auto !important;
+  display: inline-block;
 }
 
-/* Links display URLs in print */
+/* Links display URLs */
 a::after {
   content: " (" attr(href) ")";
   font-size: 10pt;
   color: #000;
+  text-decoration: none;
 }
 
-/* Page margins for PDF */
+/* -------------------------
+   HEADER / FOOTER
+------------------------- */
+header, footer {
+  text-align: center;
+  font-size: 12pt;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+}
+
+footer {
+  border-top: 1px solid #ccc;
+  padding-top: 6px;
+  margin-top: 12px;
+  font-size: 10pt;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Tech stack icons in footer */
+footer svg {
+  width: 16px !important;
+  height: 16px !important;
+  vertical-align: middle;
+}
+
+/* -------------------------
+   SECTIONS
+------------------------- */
+section {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #ddd;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* Prevent project icons from breaking across pages */
+.project-with-icon {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* -------------------------
+   TYPOGRAPHY
+------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  color: #111;
+}
+
+h3 {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+}
+
+/* -------------------------
+   PAGE SETTINGS
+------------------------- */
 @page {
   margin: 20mm;
 }
 
-/* Optional: dark mode safe print colors */
-body {
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
+/* -------------------------
+   LINKS & INTERACTIVITY REMOVAL
+------------------------- */
+button, input, textarea, select {
+  display: none;
+}
+
+.project-icon, .tech-with-icon {
+  cursor: default;
 }
