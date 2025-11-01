@@ -1,0 +1,1 @@
+// JS content for scroll animations
