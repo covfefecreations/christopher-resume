@@ -1,1 +1,251 @@
-/* Full CSS content from style.css */
+/* -------------------------
+   GENERAL LAYOUT
+------------------------- */
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  padding: 20px;
+  margin: 0;
+  color: #111;
+  background: #fff;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+header h2 {
+  margin: 5px 0 10px 0;
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #555;
+}
+
+header p {
+  font-size: 0.95rem;
+}
+
+button {
+  margin-top: 10px;
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background: #eaeaea;
+  border-color: #999;
+}
+
+/* -------------------------
+   SECTIONS
+------------------------- */
+section {
+  margin-bottom: 30px;
+}
+
+h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 4px;
+}
+
+/* Fade-in for scroll animation */
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+section:not(.visible) {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* -------------------------
+   TECH STACK
+------------------------- */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.tech-with-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* Interactive Icons */
+.tech-with-icon .icon {
+  transition: transform 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+}
+
+/* React Hover */
+.react-icon:hover {
+  animation: rotateReact 2s linear infinite;
+}
+@keyframes rotateReact {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* TypeScript Hover */
+.ts-icon:hover {
+  transform: scale(1.2);
+  filter: brightness(1.2);
+}
+
+/* Node.js Hover */
+.node-icon:hover {
+  animation: pulseNode 0.6s ease infinite alternate;
+}
+@keyframes pulseNode {
+  0% { transform: scale(1); filter: drop-shadow(0 0 0px #83cd29); }
+  100% { transform: scale(1.1); filter: drop-shadow(0 0 8px #83cd29); }
+}
+
+/* AWS Hover */
+.aws-icon:hover {
+  transform: scale(1.15) translateY(-2px);
+  filter: drop-shadow(0 4px 10px rgba(255, 153, 0, 0.6));
+}
+
+/* GraphQL Hover */
+.graphql-icon:hover {
+  animation: rotateGraphQL 1s ease infinite;
+}
+@keyframes rotateGraphQL {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(20deg); }
+}
+
+/* Git Hover */
+.git-icon:hover {
+  animation: bounceGit 0.4s ease forwards;
+}
+@keyframes bounceGit {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1.1); }
+}
+
+/* HTML5 & CSS3 Hover */
+.html-icon:hover,
+.css-icon:hover {
+  transform: scale(1.15);
+}
+
+/* -------------------------
+   PROJECT ICONS
+------------------------- */
+.project-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.project-icon {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-icon:hover {
+  transform: scale(1.2) translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+/* Tooltips */
+.project-icon::after {
+  display: block;
+  content: attr(data-tooltip);
+  position: absolute;
+  background: #111;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.project-icon:hover::after {
+  opacity: 1;
+}
+
+/* -------------------------
+   FOOTER
+------------------------- */
+footer {
+  text-align: center;
+  font-size: 10pt;
+  margin-top: 30px;
+  border-top: 1px solid #ccc;
+  padding-top: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+footer svg {
+  width: 16px !important;
+  height: 16px !important;
+  vertical-align: middle;
+}
+
+/* -------------------------
+   RESPONSIVE
+------------------------- */
+@media screen and (max-width: 768px) {
+  .tech-stack, .project-with-icon {
+    justify-content: center;
+  }
+  header h1 {
+    font-size: 1.8rem;
+  }
+  header h2 {
+    font-size: 1rem;
+  }
+}
+
+/* -------------------------
+   PROJECT ICON PULSE
+------------------------- */
+.pulse-enter {
+  animation: pulseProject 0.6s ease forwards;
+}
+
+@keyframes pulseProject {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* -------------------------
+   TECH ICON HIGHLIGHT
+------------------------- */
+.highlight {
+  filter: drop-shadow(0 0 10px rgba(255, 153, 0, 0.7)) brightness(1.2);
+}
